@@ -95,8 +95,8 @@ const FONT_MONO    = "'Space Mono', monospace";
 
 // ── Usuarios predefinidos ──────────────────────────────────
 const USERS = {
-  admin:    { password: '1234', type: 'numeric', role: 'ADMIN',  color: C.blue  },
-  invitado: { password: 'casa', type: 'alpha',   role: 'GUEST',  color: C.green },
+  admin:    { password: '2222007', type: 'numeric', role: 'ADMIN',  color: C.blue  },
+  invitado: { password: 'sasex', type: 'alpha',   role: 'GUEST',  color: C.green },
 };
 
 // ── Audio ──────────────────────────────────────────────────
