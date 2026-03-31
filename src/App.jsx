@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const REAL_MODE = true;
+const REAL_MODE = false;
 const ESP_IP = "http://192.168.1.27";
 
 const C = {
