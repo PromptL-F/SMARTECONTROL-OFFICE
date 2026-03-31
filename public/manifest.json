@@ -1,0 +1,28 @@
+{
+  "short_name": "ControlOficina",
+  "name": "Control Inteligente de Oficinas",
+  "description": "Sistema de control remoto para ESP32 e interfaz PIC",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "16x16 32x32 64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0f172a",
+  "background_color": "#0f172a",
+  "orientation": "portrait"
+}
