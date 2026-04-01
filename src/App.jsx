@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const REAL_MODE = true;
-const ESP_IP = "http://192.168.1.27";
+const ESP_IP = "http://192.168.1.56";
 
 const C = {
   bg:        '#040d1a',
@@ -95,8 +95,8 @@ const FONT_MONO    = "'Space Mono', monospace";
 
 // ── Usuarios predefinidos ──────────────────────────────────
 const USERS = {
-  admin:    { password: '2222007', type: 'numeric', role: 'ADMIN',  color: C.blue  },
-  invitado: { password: 'sasex', type: 'alpha',   role: 'GUEST',  color: C.green },
+  admin:    { password: '1234', type: 'numeric', role: 'ADMIN',  color: C.blue  },
+  invitado: { password: 'casa', type: 'alpha',   role: 'GUEST',  color: C.green },
 };
 
 // ── Audio ──────────────────────────────────────────────────
