@@ -1,4 +1,4 @@
-const CACHE_NAME = 'control-v3'; // ← incrementa esto cada update
+const CACHE_NAME = 'control-v5'; // ← incrementado
 
 const ASSETS = [
   '/',
@@ -7,15 +7,13 @@ const ASSETS = [
   '/favicon.svg'
 ];
 
-// Instalación: cachea archivos y activa inmediatamente
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
   );
-  self.skipWaiting(); // ← activa el nuevo SW sin esperar
+  self.skipWaiting();
 });
 
-// Activación: borra cachés viejos
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
@@ -25,16 +23,31 @@ self.addEventListener('activate', (event) => {
       )
     )
   );
-  self.clients.claim(); // ← toma control inmediato de todas las pestañas
+  self.clients.claim();
 });
 
-// Estrategia: Network First, cae a caché si no hay red
 self.addEventListener('fetch', (event) => {
+  const url = new URL(event.request.url);
+
+  // ✅ Dejar pasar TODO lo que no sea GET o sea IP local
+  if (
+    event.request.method !== 'GET' ||
+    url.hostname.startsWith('192.168.') ||
+    url.hostname.startsWith('10.') ||
+    url.hostname.startsWith('172.')
+  ) {
+    // No llamar event.respondWith() — el navegador maneja la petición directamente
+    return;
+  }
+
+  // Solo para GET de recursos propios de la app
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        if (response && response.status === 200 && response.type !== 'opaque') {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        }
         return response;
       })
       .catch(() => caches.match(event.request))
